@@ -1,0 +1,2 @@
+[run]
+omit = downstream_cherry_picker/tests/*
