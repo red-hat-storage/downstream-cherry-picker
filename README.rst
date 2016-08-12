@@ -9,9 +9,11 @@ This is tool is suitable for cherry-picking upstream patches into downstream
 
 Example::
 
-    $ git checkout ceph-1.3-rhel-patches
+    $ git checkout ceph-1.3-rhel-patches && git pull
+
     $ downstream-cherry-picker https://github.com/ceph/ceph/pull/10699 1335564
     ...
+
     $ git log
     (shows the new cherry-pick for that PR/bug.)
 
