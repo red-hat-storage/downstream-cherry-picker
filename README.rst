@@ -35,5 +35,9 @@ Features:
   repository, ``downstream-cherry-picker`` will download and install it for
   you.
 
+* If everything cherry-picked cleanly, ``downstream-cherry-picker`` will merge
+  the temporary rhbz- branch back into your original branch and delete the
+  rhbz- branch, so that you're all ready to push your changes to the remote.
+
 * Automatically fetches the pull request's commits if you don't have the
   commits in your local clone already.
