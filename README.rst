@@ -17,7 +17,8 @@ Example::
 
 Features:
 
-* Uses GitHub's API to determine the range of commits to cherry-pick.
+* Uses GitHub's API to determine the range of commits to cherry-pick for a
+  particular pull request.
 
 * Cherry-picks each commit in a PR using standard conventions:
 
@@ -26,7 +27,11 @@ Features:
    * Adds "``Resolves: rhbz#``" to each cherry-pick.
 
 * Does all the work on a separate "rhbz-" Git branch, so you can clean up if
-  things go wrong or you have to resolve conflicts by hand.
+  things go wrong or you have to resolve conflicts by hand. This branch name
+  convention will trigger the Git commit hook that inserts the rhbz number into
+  each changelog. If you do not have the Git commit hook installed into your
+  repository, ``downstream-cherry-picker`` will download and install it for
+  you.
 
 * Automatically fetches the pull request's commits if you don't have the
   commits in your local clone already.
