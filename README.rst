@@ -22,6 +22,7 @@ Example::
     (shows the new cherry-pick for that PR/bug.)
 
 Features:
+---------
 
 * Uses GitHub's API to determine the range of commits to cherry-pick for a
   particular pull request.
