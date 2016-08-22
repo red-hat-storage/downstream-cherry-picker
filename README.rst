@@ -1,6 +1,10 @@
 ``downstream-cherry-picker``
 ============================
 
+.. image:: https://travis-ci.org/ktdreyer/downstream-cherry-picker.svg?branch=master
+          :target: https://travis-ci.org/ktdreyer/downstream-cherry-picker
+
+
 A tool to quickly cherry-pick whole GitHub pull requests that correspond to Red
 Hat Bugzilla bugs.
 
