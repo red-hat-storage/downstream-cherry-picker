@@ -41,7 +41,7 @@ class BumpCommand(Command):
         new = "__version__ = '%s'" % '.'.join(version)
 
         module_file = read_module_contents()
-        with open('ceph_installer/__init__.py', 'w') as fileh:
+        with open('downstream_cherry_picker/__init__.py', 'w') as fileh:
             fileh.write(module_file.replace(old, new))
 
         # Commit everything with a standard commit message
