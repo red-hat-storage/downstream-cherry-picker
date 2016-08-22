@@ -26,8 +26,9 @@ Installing:
 -----------
 
 The easiest way to get ``downstream-cherry-picker`` is use
-[ktdreyer/downstream-cherry-picker
-copr](https://copr.fedoraproject.org/coprs/ktdreyer/downstream-cherry-picker/) on Fedora or el7::
+`ktdreyer/downstream-cherry-picker copr
+<https://copr.fedoraproject.org/coprs/ktdreyer/downstream-cherry-picker/>`_ on
+Fedora or el7::
 
     dnf copr enable ktdreyer/downstream-cherry-picker
 
