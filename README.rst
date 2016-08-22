@@ -9,7 +9,8 @@ A tool to quickly cherry-pick whole GitHub pull requests that correspond to Red
 Hat Bugzilla bugs.
 
 This is tool is suitable for cherry-picking upstream patches into downstream
-``-patches`` branches for rdopkg to consume.
+``-patches`` branches for `rdopkg
+<https://github.com/openstack-packages/rdopkg>`_ to consume.
 
 Example::
 
