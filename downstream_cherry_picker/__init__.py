@@ -19,7 +19,7 @@ Example:
 
 API_BASE = 'https://api.github.com'
 
-PR_URL_REGEX = r'https://github.com/([^/]+)/([^/]+)/pull/(\d+)'
+PR_URL_REGEX = r'https://github.com/([^/]+)/([^/]+)/pull/(\d+)$'
 
 HOOK_URL = 'https://gist.githubusercontent.com/alfredodeza/252d66dbf4a5c36cfb7b1cb3c0faf445/raw/08cff9560328c0c03b11b9f6ac9db98dbad0a6e4/prepare-commit-msg'  # NOQA
 
