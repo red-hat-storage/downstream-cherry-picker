@@ -2,7 +2,7 @@ import re
 import subprocess
 import sys
 from setuptools.command.test import test as TestCommand
-from setuptools import Command
+from setuptools import find_packages, Command
 
 
 def read_module_contents():
@@ -105,7 +105,7 @@ from setuptools import setup
 setup(
     name='downstream-cherry-picker',
     description='Cherry-pick GitHub PRs for RH Bugzilla tickets',
-    packages=['downstream_cherry_picker'],
+    packages=find_packages(exclude=['ez_setup']),
     author='Ken Dreyer',
     author_email='kdreyer [at] redhat.com',
     url='https://github.com/ktdreyer/downstream-cherry-picker',
