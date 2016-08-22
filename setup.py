@@ -9,6 +9,10 @@ def read_module_contents():
     with open('downstream_cherry_picker/__init__.py') as app_init:
         return app_init.read()
 
+def read_spec_contents():
+    with open('downstream-cherry-picker.spec') as spec:
+        return spec.read()
+
 module_file = read_module_contents()
 metadata = dict(re.findall("__([a-z]+)__\s*=\s*'([^']+)'", module_file))
 long_description = open('README.rst').read()
@@ -39,10 +43,15 @@ class BumpCommand(Command):
 
         old = "__version__ = '%s'" % metadata['version']
         new = "__version__ = '%s'" % '.'.join(version)
-
         module_file = read_module_contents()
         with open('downstream_cherry_picker/__init__.py', 'w') as fileh:
             fileh.write(module_file.replace(old, new))
+
+        old = "Version:        %s" % metadata['version']
+        new = "Version:        %s" % '.'.join(version)
+        spec_file = read_spec_contents()
+        with open('downstream-cherry-picker.spec', 'w') as fileh:
+            fileh.write(spec_file.replace(old, new))
 
         # Commit everything with a standard commit message
         cmd = ['git', 'commit', '-a', '-m', 'version %s' % '.'.join(version)]
