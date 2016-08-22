@@ -21,6 +21,31 @@ Example::
     $ git log
     (shows the new cherry-pick for that PR/bug.)
 
+
+Installing:
+-----------
+
+The easiest way to get ``downstream-cherry-picker`` is use
+[ktdreyer/downstream-cherry-picker
+copr](https://copr.fedoraproject.org/coprs/ktdreyer/downstream-cherry-picker/) on Fedora or el7::
+
+    dnf copr enable ktdreyer/downstream-cherry-picker
+
+After you've enabled the repo, install the package::
+
+    dnf -y install downstream-cherry-picker
+
+Or, if you want to hack on the code, install it in a Python virtualenv directly
+from GitHub::
+
+     virtualenv venv
+     . venv/bin/activate
+     git clone https://github.com/ktdreyer/downstream-cherry-picker
+     python setup.py develop
+
+You will now have a ``downstream-cherry-picker`` utility in your ``$PATH``.
+
+
 Features:
 ---------
 
