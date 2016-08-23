@@ -39,13 +39,13 @@ def usage_error():
 def current_branch():
     """ Get our current branch's name """
     cmd = ('git', 'rev-parse', '--abbrev-ref', 'HEAD')
-    return subprocess.check_output(cmd).rstrip()
+    return subprocess.check_output(cmd, universal_newlines=True).rstrip()
 
 
 def current_sha():
     """ Get our current sha1 """
     cmd = ('git', 'rev-parse', 'HEAD')
-    return subprocess.check_output(cmd).rstrip()
+    return subprocess.check_output(cmd, universal_newlines=True).rstrip()
 
 
 def get_sha_range(owner, repo, number):
