@@ -1,5 +1,6 @@
 import pytest
 import downstream_cherry_picker
+from downstream_cherry_picker import current_branch, git
 from downstream_cherry_picker import parse_pr_url, PRParseException
 
 
@@ -26,3 +27,13 @@ class TestInit(object):
         with pytest.raises(PRParseException) as e:
             parse_pr_url(url)
         print(e)
+
+    def test_git(self):
+        # Test assumes git is in $PATH.
+        # Just assert that this doesn't blow up:
+        git('--version')
+        assert True
+
+    def test_current_branch(self):
+        # Test assumes we're running from a Git branch.
+        assert current_branch() == 'master'
