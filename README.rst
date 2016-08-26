@@ -14,7 +14,10 @@ This is tool is suitable for cherry-picking upstream patches into downstream
 
 Example::
 
-    $ git checkout ceph-1.3-rhel-patches && git pull
+    (Reset your local branch to the latest "-patches"):
+    $ git checkout ceph-1.3-rhel-patches
+    $ git fetch patches
+    $ git reset --hard patches/ceph-1.3-rhel-patches
 
     $ downstream-cherry-picker https://github.com/ceph/ceph/pull/10699 1335564
     ...
