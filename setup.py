@@ -1,6 +1,7 @@
 import re
 import subprocess
 import sys
+from setuptools import setup
 from setuptools.command.test import test as TestCommand
 from setuptools import find_packages, Command
 try:
@@ -113,8 +114,6 @@ class PyTest(TestCommand):
                             self.pytest_args)
         sys.exit(errno)
 
-
-from setuptools import setup
 
 setup(
     name='downstream-cherry-picker',
