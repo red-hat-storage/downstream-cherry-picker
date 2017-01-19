@@ -49,17 +49,41 @@ def current_sha():
 
 
 def get_sha_range(owner, repo, number):
-    """ Get a range of SHAs for a particular GitHub pull request.
-
-        :return: tuple, for example ('123abc', '456def')
     """
+    Get a range of SHAs for a particular GitHub pull request.
+
+    To correctly determine the first and last commits in a PR, we have to ask
+    the main Pull Request API endpoint to give us the "base" and "head", and
+    then use those values. "head" is of course the final commit in the PR
+    (returned as "last" here). The "first" commit is the one in our list that
+    has "base" as its parent.
+
+    :return: tuple, ('first', 'last'). For example ('123abc', '456def')
+    """
+    # Find the "base" and "head" of this pull request.
+    api_endpoint = '%s/repos/%s/%s/pulls/%d'
+    r = requests.get(api_endpoint % (API_BASE, owner, repo, number))
+    r.raise_for_status()
+
+    base = r.json()['base']['sha']
+    head = r.json()['head']['sha']
+
+    # Find the first commit (the one that has "base" as a parent.)
     api_endpoint = '%s/repos/%s/%s/pulls/%d/commits'
     r = requests.get(api_endpoint % (API_BASE, owner, repo, number))
     r.raise_for_status()
 
-    first = r.json()[0]['sha']
-    last = r.json()[-1]['sha']
-    return (first, last)
+    first = None
+    for commit in r.json():
+        if base in [parent['sha'] for parent in commit['parents']]:
+            if first is None:
+                first = commit['sha']
+            else:
+                # Not sure this can ever happen, but let's bail if it does:
+                msg = 'Commits %s and %s are both children of base commit %s'
+                raise RuntimeError(msg % (first, commit['sha'], base))
+
+    return (first, head)
 
 
 def parse_pr_url(url):

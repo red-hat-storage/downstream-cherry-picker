@@ -1,0 +1,492 @@
+[
+  {
+    "sha": "386640865dee30d38f17e55fc87535e419bc3cb5",
+    "commit": {
+      "author": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2016-11-04T03:33:44Z"
+      },
+      "committer": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2017-01-13T02:54:25Z"
+      },
+      "message": "rgw: cmake: remove useless civetweb include path side effect.\n\nFor 'target_include_directories\" for the cmake object library\n'civetweb_common_objs', change from PUBLIC to PRIVATE.  This doesn't\nbreak anything, so it wasn't doing anything useful.  If it has it\nany effect, it would be to cause everything that linked against this\n\"library\" to also use the indictated include path.  Which would be great\nexcept everything in ceph wants to include \"civetweb/civetweb.h\" and\nnot \"civetweb.h\".  We already make separate arrangements elsewhere for\nthat to work.  Additionally, static object libraries in cmake aren't\nreally libraries, so I'm not entirely sure this even does anything.\nSo: making this public is not useful, and could be harmful.  Making it\nprivate makes this only take effect for building civetweb.c itself,\nexactly the effect we we require, and no more.\n\nSigned-off-by: Marcus Watts <mwatts@redhat.com>\n(cherry picked from commit 8308a13b0257c9460fd2a721c20b0c37cb9e7c57)",
+      "tree": {
+        "sha": "05b95bcd31b50d96646dba4110e1f76f878ee541",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/05b95bcd31b50d96646dba4110e1f76f878ee541"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/386640865dee30d38f17e55fc87535e419bc3cb5",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/386640865dee30d38f17e55fc87535e419bc3cb5",
+    "html_url": "https://github.com/ceph/ceph/commit/386640865dee30d38f17e55fc87535e419bc3cb5",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/386640865dee30d38f17e55fc87535e419bc3cb5/comments",
+    "author": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "15c081c6433e9ee4b6dd7c145e8e6aaddf334e69",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/15c081c6433e9ee4b6dd7c145e8e6aaddf334e69",
+        "html_url": "https://github.com/ceph/ceph/commit/15c081c6433e9ee4b6dd7c145e8e6aaddf334e69"
+      }
+    ]
+  },
+  {
+    "sha": "045551485415309ba9bad77e1aee28a0008881ca",
+    "commit": {
+      "author": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2016-07-11T21:54:07Z"
+      },
+      "committer": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2017-01-13T03:05:26Z"
+      },
+      "message": "rgw: civetweb/openssl: Load libssl.so and libcrypto.so by soname.\n\nIf building with radosgw, always look for openssl library (even when\nbuilding with nss).  Then, use objdump to fetch SONAME from the copies\nof libssl and libcrypto that were found.  When building civetweb; pass\nthe library soname values in as the libraries to load with \"dlopen\".\n\nThis is a problem that went away for a bit, but came back with some\nchanges for\nhttp://tracker.ceph.com/issues/16535\n\nFixes: https://bugzilla.redhat.com/show_bug.cgi?id=1341775\nFixes: https://bugzilla.redhat.com/show_bug.cgi?id=1258961\n\nFixes: http://tracker.ceph.com/issues/11239\n\nSigned-off-by: Marcus Watts <mwatts@redhat.com>\n(cherry picked from commit 7caa0bd002110b62514da83a37a2a3deb841267a)",
+      "tree": {
+        "sha": "f320ef84b0f3e49cfb576692c4b1d86d464aa821",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/f320ef84b0f3e49cfb576692c4b1d86d464aa821"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/045551485415309ba9bad77e1aee28a0008881ca",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/045551485415309ba9bad77e1aee28a0008881ca",
+    "html_url": "https://github.com/ceph/ceph/commit/045551485415309ba9bad77e1aee28a0008881ca",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/045551485415309ba9bad77e1aee28a0008881ca/comments",
+    "author": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "386640865dee30d38f17e55fc87535e419bc3cb5",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/386640865dee30d38f17e55fc87535e419bc3cb5",
+        "html_url": "https://github.com/ceph/ceph/commit/386640865dee30d38f17e55fc87535e419bc3cb5"
+      }
+    ]
+  },
+  {
+    "sha": "e3f80c9d0ed6762a39fc242561f5ea26f0f26546",
+    "commit": {
+      "author": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2017-01-13T08:39:57Z"
+      },
+      "committer": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2017-01-13T09:33:01Z"
+      },
+      "message": "rgw: civetweb/openssl: automagic: load libssl.so and libcrypto.so by soname.\n\nIf building with radosgw, always look for openssl library (even when\nbuilding with nss).  Then, use objdump to fetch SONAME from the copies\nof libssl and libcrypto that were found.  When building civetweb; pass\nthe library soname values in as the libraries to load with \"dlopen\".\n\nThe issue reported here against master\nhttp://tracker.ceph.com/issues/16535\nreflects stuff that doesn't seem to have made it into jewel\n\t(which had: -lssl -lcrypto hard-wired into it.)\nStill, since people were pretty riled about making that change,\nthis puts things in congruence to the final result in master.\n\t(which is: runtime shared object load of ssl crypto by soname.)\n\nFixes: http://tracker.ceph.com/issues/11239\n\nSigned-off-by: Marcus Watts <mwatts@redhat.com>\n(inspired by commit 7caa0bd002110b62514da83a37a2a3deb841267a)",
+      "tree": {
+        "sha": "095776305034833b4233e7229184e9ead6d03d2c",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/095776305034833b4233e7229184e9ead6d03d2c"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/e3f80c9d0ed6762a39fc242561f5ea26f0f26546",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/e3f80c9d0ed6762a39fc242561f5ea26f0f26546",
+    "html_url": "https://github.com/ceph/ceph/commit/e3f80c9d0ed6762a39fc242561f5ea26f0f26546",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/e3f80c9d0ed6762a39fc242561f5ea26f0f26546/comments",
+    "author": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "045551485415309ba9bad77e1aee28a0008881ca",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/045551485415309ba9bad77e1aee28a0008881ca",
+        "html_url": "https://github.com/ceph/ceph/commit/045551485415309ba9bad77e1aee28a0008881ca"
+      }
+    ]
+  },
+  {
+    "sha": "8d83dfb4176ede7490d0cab589e9566bc7d4e387",
+    "commit": {
+      "author": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2016-03-23T21:32:14Z"
+      },
+      "committer": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2017-01-13T09:33:07Z"
+      },
+      "message": "rgw: Document that radosgw now supports SSL.\n\nThis includes information on file format and configuration file syntax.\n\nSigned-off-by: Marcus Watts <mwatts@redhat.com>\n(cherry picked from commit d4e72dfed30274b3cfbad4ac58c0746a98c0148b)",
+      "tree": {
+        "sha": "c08c1f22eef2aeeece6b6a8274cff7126a865326",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/c08c1f22eef2aeeece6b6a8274cff7126a865326"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/8d83dfb4176ede7490d0cab589e9566bc7d4e387",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/8d83dfb4176ede7490d0cab589e9566bc7d4e387",
+    "html_url": "https://github.com/ceph/ceph/commit/8d83dfb4176ede7490d0cab589e9566bc7d4e387",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/8d83dfb4176ede7490d0cab589e9566bc7d4e387/comments",
+    "author": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "e3f80c9d0ed6762a39fc242561f5ea26f0f26546",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/e3f80c9d0ed6762a39fc242561f5ea26f0f26546",
+        "html_url": "https://github.com/ceph/ceph/commit/e3f80c9d0ed6762a39fc242561f5ea26f0f26546"
+      }
+    ]
+  },
+  {
+    "sha": "28f2841c8b9a832e486b9f89c574a4591bf3d448",
+    "commit": {
+      "author": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2016-11-02T04:18:48Z"
+      },
+      "committer": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2017-01-13T09:33:07Z"
+      },
+      "message": "rgw: Get civetweb ssl enhancement: wip-listen3 = mg_get_local_addr\n\nThe logic inside of radosgw that computes aws v4 signatures wants to know\nwhat server port the client connected.  The patch to civetweb patch adds a\ncall mg_get_local_addr() which will permit that code to actually find out\non what address a connection was received, rather than merely guessing\nbased on configuration as it previously did.\n\nSigned-off-by: Marcus Watts <mwatts@redhat.com>\n(cherry picked from commit 46ced9ddd2795f00f014e22e5637070b49e7a6d5)",
+      "tree": {
+        "sha": "0f2973bf7b638b25fb29111449d603ad209b0fd1",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/0f2973bf7b638b25fb29111449d603ad209b0fd1"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/28f2841c8b9a832e486b9f89c574a4591bf3d448",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/28f2841c8b9a832e486b9f89c574a4591bf3d448",
+    "html_url": "https://github.com/ceph/ceph/commit/28f2841c8b9a832e486b9f89c574a4591bf3d448",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/28f2841c8b9a832e486b9f89c574a4591bf3d448/comments",
+    "author": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "8d83dfb4176ede7490d0cab589e9566bc7d4e387",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/8d83dfb4176ede7490d0cab589e9566bc7d4e387",
+        "html_url": "https://github.com/ceph/ceph/commit/8d83dfb4176ede7490d0cab589e9566bc7d4e387"
+      }
+    ]
+  },
+  {
+    "sha": "14a6aabe22f68436ea3297ce0851700f86ee5b12",
+    "commit": {
+      "author": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2016-08-03T21:36:55Z"
+      },
+      "committer": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2017-01-13T09:33:08Z"
+      },
+      "message": "rgw: Handle multiple listening addreses w/ optional ssl \"correctly\" with civetweb.\n\nFor civetweb: accept a range of port numbers joined with '+'.\nPort numbers may include an ipaddress: prefix and 's' suffix.\nAdditionally, use \"mg_get_local_addr\" to correctly deduce host port per\nincoming connection.\n\ncivetweb can accept connections on multiple ports, some of which\nmight have SSL turned on and some not.  Both s3 and swift have various\nauthorization protocols in which the port number matters.  In the generic\nradosgw frontend process, each frontend only has one port number, but\nwe should want to have both ssl and non-ssl connections managed within\none rgw frontend, because the thread pool is also per front-end, and\nthat *is* a scarce resource.\n\nSo, this patch enables the use of multiple ports with a single civetweb\nfrontend.  To indicate https: append an 's' to portno.  To use multiple\nports, use +.  So 80+443s indicates use of the usual default http ports.\nThe parsed port is not stored in the frontend structure,\n\nSo instead, this patch adds logic to use the results of\nmg_get_local_addr() on a per-connection basis insetad of the generic\nfront-end port number.  This will affect \"v4\" s3 authorization, and also\naffect swift pre-signed URLs.\n\nmg_get_local_addr() is a new customization to civetweb; that submodule\nwas updated (in a temporary repository) by the previous commit to this.\n\nSigned-off-by: Marcus Watts <mwatts@redhat.com>\n(cherry picked from commit 8bc6decc0774fae9ac881f91e73da55deebe3360)",
+      "tree": {
+        "sha": "40fffe4abab634df8ef758b1eb54dabacb1b94d9",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/40fffe4abab634df8ef758b1eb54dabacb1b94d9"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/14a6aabe22f68436ea3297ce0851700f86ee5b12",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/14a6aabe22f68436ea3297ce0851700f86ee5b12",
+    "html_url": "https://github.com/ceph/ceph/commit/14a6aabe22f68436ea3297ce0851700f86ee5b12",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/14a6aabe22f68436ea3297ce0851700f86ee5b12/comments",
+    "author": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "698250563ccc4c69e5ca5aebf65dc352d80a8bdd",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/698250563ccc4c69e5ca5aebf65dc352d80a8bdd",
+        "html_url": "https://github.com/ceph/ceph/commit/698250563ccc4c69e5ca5aebf65dc352d80a8bdd"
+      }
+    ]
+  },
+  {
+    "sha": "698250563ccc4c69e5ca5aebf65dc352d80a8bdd",
+    "commit": {
+      "author": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2016-12-20T05:22:02Z"
+      },
+      "committer": {
+        "name": "Marcus Watts",
+        "email": "mwatts@redhat.com",
+        "date": "2017-01-13T09:33:08Z"
+      },
+      "message": "rgw: s3: secure_port should override port, also apply ssl default right.\n\nWithout https, only port is set.  With https, secure_port and port are\nboth set to the same value.  The previous logic looked at port first and\nhad overly simplified conditional logic which was liable to try to apply\nboth non-default cases.  The correct behavior is: look secure_port first,\nand if secure_port is set, then only check to see if it's a non-default\nport.\n\nSigned-off-by: Marcus Watts <mwatts@redhat.com>\n(cherry picked from commit a113cf5ff5a642d2ee4cc83f5c7001b4bfe0a5df)",
+      "tree": {
+        "sha": "f9e15b008af206c20766cf5c266294aa44598c80",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/f9e15b008af206c20766cf5c266294aa44598c80"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/698250563ccc4c69e5ca5aebf65dc352d80a8bdd",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/698250563ccc4c69e5ca5aebf65dc352d80a8bdd",
+    "html_url": "https://github.com/ceph/ceph/commit/698250563ccc4c69e5ca5aebf65dc352d80a8bdd",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/698250563ccc4c69e5ca5aebf65dc352d80a8bdd/comments",
+    "author": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "mdw-at-linuxbox",
+      "id": 5238902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/5238902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mdw-at-linuxbox",
+      "html_url": "https://github.com/mdw-at-linuxbox",
+      "followers_url": "https://api.github.com/users/mdw-at-linuxbox/followers",
+      "following_url": "https://api.github.com/users/mdw-at-linuxbox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mdw-at-linuxbox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mdw-at-linuxbox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mdw-at-linuxbox/subscriptions",
+      "organizations_url": "https://api.github.com/users/mdw-at-linuxbox/orgs",
+      "repos_url": "https://api.github.com/users/mdw-at-linuxbox/repos",
+      "events_url": "https://api.github.com/users/mdw-at-linuxbox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mdw-at-linuxbox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "28f2841c8b9a832e486b9f89c574a4591bf3d448",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/28f2841c8b9a832e486b9f89c574a4591bf3d448",
+        "html_url": "https://github.com/ceph/ceph/commit/28f2841c8b9a832e486b9f89c574a4591bf3d448"
+      }
+    ]
+  }
+]
