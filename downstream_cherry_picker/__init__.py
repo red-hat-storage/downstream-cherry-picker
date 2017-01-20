@@ -6,7 +6,7 @@ import subprocess
 import sys
 import requests
 
-__version__ = '1.0.5'
+__version__ = '1.1.0'
 
 USAGE = """
 %(cmd)s github-url rhbz-number
