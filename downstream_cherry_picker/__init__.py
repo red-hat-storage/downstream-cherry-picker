@@ -82,7 +82,13 @@ def get_sha_range(owner, repo, number):
                 # Not sure this can ever happen, but let's bail if it does:
                 msg = 'Commits %s and %s are both children of base commit %s'
                 raise RuntimeError(msg % (first, commit['sha'], base))
-
+    if first is None:
+        # We could not find any commit in this PR that is a direct parent of
+        # the base commit (ie the current target branch).
+        # This can happen when a PR is initially targeted to one branch
+        # (eg # "jewel-next"), and then someone changes it to target a another
+        # branch (eg "jewel").
+        first = base
     return (first, head)
 
 
