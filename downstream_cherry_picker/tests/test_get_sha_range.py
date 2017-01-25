@@ -18,14 +18,16 @@ class MockResponse(object):
         # Return data from our static fixture file
         # (eg from https://api.github.com/repos/ceph/ceph/pulls/12917)
         # (or from https://api.github.com/repos/ceph/ceph/pulls/12917/commits)
-        filename = os.path.join(FIXTURES_DIR, self.endpoint + '.json')
+        path = self.url.replace('https://api.github.com/repos/ceph/ceph',
+                                FIXTURES_DIR)
+        filename = path + '.json'
         with open(filename) as fp:
             return json.load(fp)
 
 
 def mock_get(url):
     m = MockResponse()
-    m.endpoint = os.path.basename(url)
+    m.url = url
     return m
 
 
