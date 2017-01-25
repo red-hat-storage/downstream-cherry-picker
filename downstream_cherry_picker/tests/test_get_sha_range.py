@@ -34,13 +34,14 @@ def mock_get(url):
 
 class TestGetShaRange(object):
 
-    @pytest.mark.parametrize('pr,first,last', [
+    @pytest.mark.parametrize('pr,expected_first,expected_last', [
         (12917, '386640865dee30d38f17e55fc87535e419bc3cb5',
                 '14a6aabe22f68436ea3297ce0851700f86ee5b12'),
     ])
-    def test_get_sha_range(self, monkeypatch, pr, first, last):
+    def test_get_sha_range(self, monkeypatch, pr, expected_first,
+                           expected_last):
         monkeypatch.delattr('requests.sessions.Session.request')
         monkeypatch.setattr(requests, 'get', mock_get)
         (got_first, got_last) = get_sha_range('ceph', 'ceph', pr)
-        assert got_first == first
-        assert got_last == last
+        assert got_first == expected_first
+        assert got_last == expected_last
