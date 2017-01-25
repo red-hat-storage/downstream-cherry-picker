@@ -73,22 +73,16 @@ def get_sha_range(owner, repo, number):
     r = requests.get(api_endpoint % (API_BASE, owner, repo, number))
     r.raise_for_status()
 
+    commit_sha1s = set([c['sha'] for c in r.json()])
+
     first = None
     for commit in r.json():
-        if base in [parent['sha'] for parent in commit['parents']]:
-            if first is None:
-                first = commit['sha']
-            else:
-                # Not sure this can ever happen, but let's bail if it does:
-                msg = 'Commits %s and %s are both children of base commit %s'
-                raise RuntimeError(msg % (first, commit['sha'], base))
+        if not set([parent['sha'] for parent in commit['parents']]) & commit_sha1s:
+            first = commit['sha']
+
     if first is None:
-        # We could not find any commit in this PR that is a direct parent of
-        # the base commit (ie the current target branch).
-        # This can happen when a PR is initially targeted to one branch
-        # (eg # "jewel-next"), and then someone changes it to target a another
-        # branch (eg "jewel").
-        first = base
+        raise RuntimeError("Failed to find first commit!")
+
     return (first, head)
 
 
