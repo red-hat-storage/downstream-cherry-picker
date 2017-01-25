@@ -1,3 +1,4 @@
+import pytest
 import os
 import json
 import requests
@@ -33,9 +34,13 @@ def mock_get(url):
 
 class TestGetShaRange(object):
 
-    def test_get_sha_range(self, monkeypatch):
+    @pytest.mark.parametrize('pr,first,last', [
+        (12917, '386640865dee30d38f17e55fc87535e419bc3cb5',
+                '14a6aabe22f68436ea3297ce0851700f86ee5b12'),
+    ])
+    def test_get_sha_range(self, monkeypatch, pr, first, last):
         monkeypatch.delattr('requests.sessions.Session.request')
         monkeypatch.setattr(requests, 'get', mock_get)
-        (first, last) = get_sha_range('ceph', 'ceph', 12917)
-        assert first == '386640865dee30d38f17e55fc87535e419bc3cb5'
-        assert last == '14a6aabe22f68436ea3297ce0851700f86ee5b12'
+        (got_first, got_last) = get_sha_range('ceph', 'ceph', pr)
+        assert got_first == first
+        assert got_last == last
