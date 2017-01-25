@@ -1,0 +1,72 @@
+[
+  {
+    "sha": "b044361336e1f6bc14b715d85f5ed0c289c056bf",
+    "commit": {
+      "author": {
+        "name": "Matt Benjamin",
+        "email": "mbenjamin@redhat.com",
+        "date": "2016-11-09T19:24:15Z"
+      },
+      "committer": {
+        "name": "Abhishek Varshney",
+        "email": "abhishek.varshney@flipkart.com",
+        "date": "2016-11-17T14:40:48Z"
+      },
+      "message": "rgw_file: fix spurious mount entries w/Linux NFS client\n\nThis change fixes the initialization of root file handles to have\ntheir correct fs instance.  Previously, the root file handle had\nfs_inst-1.  The apparent change in fsid in a subordinate directory\ntriggers the client's behavior for new filesystem mounts, which\nwe don't want.\n\nFixes: http://tracker.ceph.com/issues/17850\n\nSigned-off-by: Matt Benjamin <mbenjamin@redhat.com>\n(cherry picked from commit d929ba0c5b8671150ebe1ab9057836b0fa6dadea)",
+      "tree": {
+        "sha": "ed22a0dfe5c926de93597c9e573c8d1135c5169e",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/ed22a0dfe5c926de93597c9e573c8d1135c5169e"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/b044361336e1f6bc14b715d85f5ed0c289c056bf",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/b044361336e1f6bc14b715d85f5ed0c289c056bf",
+    "html_url": "https://github.com/ceph/ceph/commit/b044361336e1f6bc14b715d85f5ed0c289c056bf",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/b044361336e1f6bc14b715d85f5ed0c289c056bf/comments",
+    "author": {
+      "login": "mattbenjamin",
+      "id": 301287,
+      "avatar_url": "https://avatars.githubusercontent.com/u/301287?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mattbenjamin",
+      "html_url": "https://github.com/mattbenjamin",
+      "followers_url": "https://api.github.com/users/mattbenjamin/followers",
+      "following_url": "https://api.github.com/users/mattbenjamin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mattbenjamin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mattbenjamin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mattbenjamin/subscriptions",
+      "organizations_url": "https://api.github.com/users/mattbenjamin/orgs",
+      "repos_url": "https://api.github.com/users/mattbenjamin/repos",
+      "events_url": "https://api.github.com/users/mattbenjamin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mattbenjamin/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "Abhishekvrshny",
+      "id": 12811812,
+      "avatar_url": "https://avatars.githubusercontent.com/u/12811812?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Abhishekvrshny",
+      "html_url": "https://github.com/Abhishekvrshny",
+      "followers_url": "https://api.github.com/users/Abhishekvrshny/followers",
+      "following_url": "https://api.github.com/users/Abhishekvrshny/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Abhishekvrshny/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Abhishekvrshny/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Abhishekvrshny/subscriptions",
+      "organizations_url": "https://api.github.com/users/Abhishekvrshny/orgs",
+      "repos_url": "https://api.github.com/users/Abhishekvrshny/repos",
+      "events_url": "https://api.github.com/users/Abhishekvrshny/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Abhishekvrshny/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "6cf2916b0ee1336c3508974ee439dde1320265df",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/6cf2916b0ee1336c3508974ee439dde1320265df",
+        "html_url": "https://github.com/ceph/ceph/commit/6cf2916b0ee1336c3508974ee439dde1320265df"
+      }
+    ]
+  }
+]

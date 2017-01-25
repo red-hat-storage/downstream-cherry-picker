@@ -52,44 +52,54 @@ def get_sha_range(owner, repo, number):
     """
     Get a range of SHAs for a particular GitHub pull request.
 
-    To correctly determine the first and last commits in a PR, we have to ask
-    the main Pull Request API endpoint to give us the "base" and "head", and
-    then use those values. "head" is of course the final commit in the PR
-    (returned as "last" here). The "first" commit is the one in our list that
-    has "base" as its parent.
+    To correctly determine the last commit in a PR, we can't use the sorted
+    "commits" list from the /commits API, because that is not always sorted in
+    the same way that Git itself sorts commits. We must ask the main Pull
+    Request API endpoint to give us the "head" (returned as "last" here).
 
     :return: tuple, ('first', 'last'). For example ('123abc', '456def')
     """
-    # Find the "base" and "head" of this pull request.
-    api_endpoint = '%s/repos/%s/%s/pulls/%d'
-    r = requests.get(api_endpoint % (API_BASE, owner, repo, number))
-    r.raise_for_status()
-
-    base = r.json()['base']['sha']
-    head = r.json()['head']['sha']
-
-    # Find the first commit (the one that has "base" as a parent.)
+    # Find the first commit (this sometimes, but not always, has "base" as a
+    # parent.)
     api_endpoint = '%s/repos/%s/%s/pulls/%d/commits'
     r = requests.get(api_endpoint % (API_BASE, owner, repo, number))
     r.raise_for_status()
 
+    # Ensure there are no merge commits in this PR:
+    # (git-cherry-pick cannot handle merge commits. It requires a --mainline
+    # arg to tell it explicitly what to do.)
+    for commit in r.json():
+        if len(commit['parents']) > 1:
+            raise NotImplementedError(
+                'Merge commit %s found in PR. This must be handled manually '
+                '(with git cherry-pick -m)' % commit['sha'])
+
+    shas = set([x['sha'] for x in r.json()])
     first = None
     for commit in r.json():
-        if base in [parent['sha'] for parent in commit['parents']]:
-            if first is None:
-                first = commit['sha']
-            else:
-                # Not sure this can ever happen, but let's bail if it does:
-                msg = 'Commits %s and %s are both children of base commit %s'
-                raise RuntimeError(msg % (first, commit['sha'], base))
+        for parent in commit['parents']:
+            if parent['sha'] not in shas:
+                # It may be the first commit in this PR:
+                if first is None:
+                    first = commit['sha']
+                    continue
+                raise RuntimeError(
+                    'Selected %s as the first commit with an unknown parent, '
+                    'and also found another commit %s with unknown parent %s' %
+                    (first, commit['sha'], parent['sha']))
     if first is None:
-        # We could not find any commit in this PR that is a direct parent of
-        # the base commit (ie the current target branch).
-        # This can happen when a PR is initially targeted to one branch
-        # (eg # "jewel-next"), and then someone changes it to target a another
-        # branch (eg "jewel").
-        first = base
-    return (first, head)
+        # This should never happen, but let's be safe and check.
+        log.error("Could not find this PR's first commit. Report a bug?")
+        raise RuntimeError('No PR commits lacked parents')
+
+    # Find the "head" of this pull request (ie "last" commit in this PR).
+    api_endpoint = '%s/repos/%s/%s/pulls/%d'
+    r = requests.get(api_endpoint % (API_BASE, owner, repo, number))
+    r.raise_for_status()
+
+    last = r.json()['head']['sha']
+
+    return (first, last)
 
 
 def parse_pr_url(url):

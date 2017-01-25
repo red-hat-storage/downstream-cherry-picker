@@ -1,0 +1,632 @@
+[
+  {
+    "sha": "df1f835168dce219e4db65e02cf54323087e7f49",
+    "commit": {
+      "author": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-10-12T01:08:12Z"
+      },
+      "committer": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-11-20T21:04:16Z"
+      },
+      "message": "test/osd-scrub-repair.sh: Use test case specific object names to help with diagnostics\n\nSigned-off-by: David Zafman <dzafman@redhat.com>\n(cherry picked from commit 0bf4da589155ee50969812492cfbc66368efb54c)",
+      "tree": {
+        "sha": "050e6387e8303737565be7cab046e6502a299905",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/050e6387e8303737565be7cab046e6502a299905"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/df1f835168dce219e4db65e02cf54323087e7f49",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/df1f835168dce219e4db65e02cf54323087e7f49",
+    "html_url": "https://github.com/ceph/ceph/commit/df1f835168dce219e4db65e02cf54323087e7f49",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/df1f835168dce219e4db65e02cf54323087e7f49/comments",
+    "author": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "427f357f0eed32c9ce17590ae9303a94e8b710e7",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/427f357f0eed32c9ce17590ae9303a94e8b710e7",
+        "html_url": "https://github.com/ceph/ceph/commit/427f357f0eed32c9ce17590ae9303a94e8b710e7"
+      }
+    ]
+  },
+  {
+    "sha": "e6614e0a11a63f452add2e97b27204a64218bbc3",
+    "commit": {
+      "author": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-05-20T20:58:32Z"
+      },
+      "committer": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-11-28T17:53:48Z"
+      },
+      "message": "osd: CLEANUP: Remove unused pending_read member\n\nRemove unused struct\n\nSigned-off-by: David Zafman <dzafman@redhat.com>\n(cherry picked from commit 36fd68c96653e83f87767feb08530a9fc6e841b0)",
+      "tree": {
+        "sha": "67181f5dac439a0c03aab446c2fe5195333a2abd",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/67181f5dac439a0c03aab446c2fe5195333a2abd"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/e6614e0a11a63f452add2e97b27204a64218bbc3",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/e6614e0a11a63f452add2e97b27204a64218bbc3",
+    "html_url": "https://github.com/ceph/ceph/commit/e6614e0a11a63f452add2e97b27204a64218bbc3",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/e6614e0a11a63f452add2e97b27204a64218bbc3/comments",
+    "author": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "df1f835168dce219e4db65e02cf54323087e7f49",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/df1f835168dce219e4db65e02cf54323087e7f49",
+        "html_url": "https://github.com/ceph/ceph/commit/df1f835168dce219e4db65e02cf54323087e7f49"
+      }
+    ]
+  },
+  {
+    "sha": "f306bbc4748ba0eacc02e701d5d709c2c771fa24",
+    "commit": {
+      "author": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-05-20T22:20:18Z"
+      },
+      "committer": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-11-28T17:53:48Z"
+      },
+      "message": "osd: Handle recovery read errors\n\nFixes: http://tracker.ceph.com/issues/13937\n\nSigned-off-by: David Zafman <dzafman@redhat.com>\n(cherry picked from commit c51d70e1e837c972e42ddd5fa66f7ca4477b95cc)\n\nConflicts:\n\tsrc/osd/ReplicatedPG.h (trivial)",
+      "tree": {
+        "sha": "32b6dbd98561501c86d2e749ce6893c33cf77b5a",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/32b6dbd98561501c86d2e749ce6893c33cf77b5a"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/f306bbc4748ba0eacc02e701d5d709c2c771fa24",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/f306bbc4748ba0eacc02e701d5d709c2c771fa24",
+    "html_url": "https://github.com/ceph/ceph/commit/f306bbc4748ba0eacc02e701d5d709c2c771fa24",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/f306bbc4748ba0eacc02e701d5d709c2c771fa24/comments",
+    "author": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "120c040a4c5a91b3f368597a8c83703437b32fb7",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/120c040a4c5a91b3f368597a8c83703437b32fb7",
+        "html_url": "https://github.com/ceph/ceph/commit/120c040a4c5a91b3f368597a8c83703437b32fb7"
+      }
+    ]
+  },
+  {
+    "sha": "120c040a4c5a91b3f368597a8c83703437b32fb7",
+    "commit": {
+      "author": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-05-21T01:19:42Z"
+      },
+      "committer": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-11-28T17:53:48Z"
+      },
+      "message": "osd: Fix log messages\n\nSigned-off-by: David Zafman <dzafman@redhat.com>\n(cherry picked from commit b40ec3fe890679b4c73778815e1bedd492cb264b)",
+      "tree": {
+        "sha": "b522036b06b5eb1333c3a8e1ca5bd5102491d0ad",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/b522036b06b5eb1333c3a8e1ca5bd5102491d0ad"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/120c040a4c5a91b3f368597a8c83703437b32fb7",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/120c040a4c5a91b3f368597a8c83703437b32fb7",
+    "html_url": "https://github.com/ceph/ceph/commit/120c040a4c5a91b3f368597a8c83703437b32fb7",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/120c040a4c5a91b3f368597a8c83703437b32fb7/comments",
+    "author": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "e6614e0a11a63f452add2e97b27204a64218bbc3",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/e6614e0a11a63f452add2e97b27204a64218bbc3",
+        "html_url": "https://github.com/ceph/ceph/commit/e6614e0a11a63f452add2e97b27204a64218bbc3"
+      }
+    ]
+  },
+  {
+    "sha": "85b7af9c7dbe7bbc3bdb62231bda8aac5634efaa",
+    "commit": {
+      "author": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-05-27T05:09:42Z"
+      },
+      "committer": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-11-28T17:53:48Z"
+      },
+      "message": "osd: Fix hang on unfound object after mark_unfound_lost is done\n\nSigned-off-by: David Zafman <dzafman@redhat.com>\n(cherry picked from commit 73a27533beba3587f8447b4d41d200427c45042b)\n\nConflicts:\n\tsrc/osd/ReplicatedPG.cc (trivial)",
+      "tree": {
+        "sha": "3b793e07f89cbf00f66aa6f4958e1efc4e01d2a0",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/3b793e07f89cbf00f66aa6f4958e1efc4e01d2a0"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/85b7af9c7dbe7bbc3bdb62231bda8aac5634efaa",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/85b7af9c7dbe7bbc3bdb62231bda8aac5634efaa",
+    "html_url": "https://github.com/ceph/ceph/commit/85b7af9c7dbe7bbc3bdb62231bda8aac5634efaa",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/85b7af9c7dbe7bbc3bdb62231bda8aac5634efaa/comments",
+    "author": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f306bbc4748ba0eacc02e701d5d709c2c771fa24",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/f306bbc4748ba0eacc02e701d5d709c2c771fa24",
+        "html_url": "https://github.com/ceph/ceph/commit/f306bbc4748ba0eacc02e701d5d709c2c771fa24"
+      }
+    ]
+  },
+  {
+    "sha": "fc0cc26cdd8a7a6a5f7dad1790af1fa47025492b",
+    "commit": {
+      "author": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-06-15T03:09:15Z"
+      },
+      "committer": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-11-28T17:53:49Z"
+      },
+      "message": "test: Handle object removals in a non-racey way\n\nSigned-off-by: David Zafman <dzafman@redhat.com>\n(cherry picked from commit bfe3ebd94fdc1ef36ebe6e8f9d38acea322eca22)",
+      "tree": {
+        "sha": "8ecfbb298e54da047088bd23b3c905044d914f17",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/8ecfbb298e54da047088bd23b3c905044d914f17"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/fc0cc26cdd8a7a6a5f7dad1790af1fa47025492b",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/fc0cc26cdd8a7a6a5f7dad1790af1fa47025492b",
+    "html_url": "https://github.com/ceph/ceph/commit/fc0cc26cdd8a7a6a5f7dad1790af1fa47025492b",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/fc0cc26cdd8a7a6a5f7dad1790af1fa47025492b/comments",
+    "author": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "85b7af9c7dbe7bbc3bdb62231bda8aac5634efaa",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/85b7af9c7dbe7bbc3bdb62231bda8aac5634efaa",
+        "html_url": "https://github.com/ceph/ceph/commit/85b7af9c7dbe7bbc3bdb62231bda8aac5634efaa"
+      }
+    ]
+  },
+  {
+    "sha": "d8a4b74216253e62f56bf4fff03b6ae6e8365206",
+    "commit": {
+      "author": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-07-22T00:36:34Z"
+      },
+      "committer": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-11-28T17:53:49Z"
+      },
+      "message": "test: Remove extra objectstore_tool call which causes a recovery\n\nCaused by: 70e000a9a42c50eda48f5d3b9e432ffc3a70f75b\n\nSigned-off-by: David Zafman <dzafman@redhat.com>\n(cherry picked from commit 6904529d1b53993304de2927500937ba0d493e9e)",
+      "tree": {
+        "sha": "b2546e896f0078b546e2db9deb737bea8637dbfd",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/b2546e896f0078b546e2db9deb737bea8637dbfd"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/d8a4b74216253e62f56bf4fff03b6ae6e8365206",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/d8a4b74216253e62f56bf4fff03b6ae6e8365206",
+    "html_url": "https://github.com/ceph/ceph/commit/d8a4b74216253e62f56bf4fff03b6ae6e8365206",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/d8a4b74216253e62f56bf4fff03b6ae6e8365206/comments",
+    "author": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "fc0cc26cdd8a7a6a5f7dad1790af1fa47025492b",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/fc0cc26cdd8a7a6a5f7dad1790af1fa47025492b",
+        "html_url": "https://github.com/ceph/ceph/commit/fc0cc26cdd8a7a6a5f7dad1790af1fa47025492b"
+      }
+    ]
+  },
+  {
+    "sha": "289696d533038c2248c1fe0c8ee03adad343cfa9",
+    "commit": {
+      "author": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-10-14T23:17:55Z"
+      },
+      "committer": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-11-28T17:53:49Z"
+      },
+      "message": "test.sh: Make check for flags more robust\n\nLow space broke test, saw \"flags nearfull,pauserd,pausewr....\"\n\nSigned-off-by: David Zafman <dzafman@redhat.com>\n(cherry picked from commit b4c080b1b4378d659c1ca8a17811cd6f84595166)",
+      "tree": {
+        "sha": "bea80e7f1befaf93b14609fd1562e31b5d079213",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/bea80e7f1befaf93b14609fd1562e31b5d079213"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/289696d533038c2248c1fe0c8ee03adad343cfa9",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/289696d533038c2248c1fe0c8ee03adad343cfa9",
+    "html_url": "https://github.com/ceph/ceph/commit/289696d533038c2248c1fe0c8ee03adad343cfa9",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/289696d533038c2248c1fe0c8ee03adad343cfa9/comments",
+    "author": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "d8a4b74216253e62f56bf4fff03b6ae6e8365206",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/d8a4b74216253e62f56bf4fff03b6ae6e8365206",
+        "html_url": "https://github.com/ceph/ceph/commit/d8a4b74216253e62f56bf4fff03b6ae6e8365206"
+      }
+    ]
+  },
+  {
+    "sha": "1926adc826de9ddaaa04138ce2a0b276eeda7ad1",
+    "commit": {
+      "author": {
+        "name": "Kefu Chai",
+        "email": "kchai@redhat.com",
+        "date": "2016-11-11T13:37:50Z"
+      },
+      "committer": {
+        "name": "David Zafman",
+        "email": "dzafman@redhat.com",
+        "date": "2016-12-07T20:32:23Z"
+      },
+      "message": "ReplicatedPG::failed_push: release read lock on failure\n\nand requeue the blocked ops.\n\nFixes: http://tracker.ceph.com/issues/17857\nSigned-off-by: Kefu Chai <kchai@redhat.com>\n(cherry picked from commit b3224a18f6acc7ed54c2162b140a33b6146a16be)",
+      "tree": {
+        "sha": "8c19985b1c7b5c9927fabae3beeeaee3274037b0",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/8c19985b1c7b5c9927fabae3beeeaee3274037b0"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/1926adc826de9ddaaa04138ce2a0b276eeda7ad1",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/1926adc826de9ddaaa04138ce2a0b276eeda7ad1",
+    "html_url": "https://github.com/ceph/ceph/commit/1926adc826de9ddaaa04138ce2a0b276eeda7ad1",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/1926adc826de9ddaaa04138ce2a0b276eeda7ad1/comments",
+    "author": {
+      "login": "tchaikov",
+      "id": 59071,
+      "avatar_url": "https://avatars.githubusercontent.com/u/59071?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tchaikov",
+      "html_url": "https://github.com/tchaikov",
+      "followers_url": "https://api.github.com/users/tchaikov/followers",
+      "following_url": "https://api.github.com/users/tchaikov/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tchaikov/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tchaikov/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tchaikov/subscriptions",
+      "organizations_url": "https://api.github.com/users/tchaikov/orgs",
+      "repos_url": "https://api.github.com/users/tchaikov/repos",
+      "events_url": "https://api.github.com/users/tchaikov/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tchaikov/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "dzafman",
+      "id": 2467610,
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467610?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dzafman",
+      "html_url": "https://github.com/dzafman",
+      "followers_url": "https://api.github.com/users/dzafman/followers",
+      "following_url": "https://api.github.com/users/dzafman/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dzafman/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dzafman/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dzafman/subscriptions",
+      "organizations_url": "https://api.github.com/users/dzafman/orgs",
+      "repos_url": "https://api.github.com/users/dzafman/repos",
+      "events_url": "https://api.github.com/users/dzafman/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dzafman/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "289696d533038c2248c1fe0c8ee03adad343cfa9",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/289696d533038c2248c1fe0c8ee03adad343cfa9",
+        "html_url": "https://github.com/ceph/ceph/commit/289696d533038c2248c1fe0c8ee03adad343cfa9"
+      }
+    ]
+  }
+]

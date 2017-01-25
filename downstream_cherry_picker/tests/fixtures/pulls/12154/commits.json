@@ -1,0 +1,72 @@
+[
+  {
+    "sha": "6efad699249ba7c6928193dba111dbb23b606beb",
+    "commit": {
+      "author": {
+        "name": "Patrick Donnelly",
+        "email": "pdonnell@redhat.com",
+        "date": "2016-11-18T02:05:03Z"
+      },
+      "committer": {
+        "name": "Loic Dachary",
+        "email": "ldachary@redhat.com",
+        "date": "2016-11-23T08:03:08Z"
+      },
+      "message": "mds: use projected path construction for access\n\nA new CDentry will not have a parent until its projected parent is\nflushed to journal. During path construction a given dentry may have no\nparent yet which will cause fallbacks to be used (the inode number).\nThis can cause access checks to fail:\n\n    2016-11-17 19:50:43.830207 7eff9977a700 20 Session check_access path #10000000002/3\n\ncompare to an earlier check:\n\n    2016-11-17 19:50:43.824223 7eff9977a700 20 Session check_access path /test/1/2\n\nThis commit refactors path construction to optionally use projected\nparents for the entire chain of directories. Existing use of real stable\nparents is unchanged. For example, this line is the same before and\nafter the patch:\n\n    2016-11-18 23:17:15.611680 7f153f97a700 12 mds.0.cache.dir(10000000002) add_null_dentry [dentry #10000000002/3 [2,head] auth NULL (dversion lock) pv=0 v=1 inode=0 0x55e0f771f5f0]\n\nHere inode \"#10000000002\" has no stable parent yet. So the path is\nconstructed as \"#10000000002/3\".\n\nOne notable change in this commit is the removal of\nmake_path_string_projected which was only used in debugging code. Here's\nan example difference:\n\n    2016-11-17 19:50:43.827915 7eff9977a700 10 mds.0.server traverse_to_auth_dir [dir 10000000003 {#10000000003 #10000000002/3}/ [2,head] auth v=1 cv=0/0 state=1073741826|complete f() n() hs=0+0,ss=0+0 0x55f5d35e2ee0]\n\nto:\n\n    2016-11-18 23:17:15.617757 7f153f97a700 10 mds.0.server traverse_to_auth_dir [dir 10000000003 /test/1/2/3/ [2,head] auth v=1 cv=0/0 state=1073741826|complete f() n() hs=0+0,ss=0+0 0x55e0f7706ee0]\n\nFixes: http://tracker.ceph.com/issues/17858\n\nSigned-off-by: Patrick Donnelly <pdonnell@redhat.com>\n(cherry picked from commit 7b4561091e11b9c941ef8fb96a90ab31a1d6ccec)\n\nConflicts:\n\tsrc/mds/ScrubStack.cc : the hunk refers to a code that does not\n                              exist in jewel",
+      "tree": {
+        "sha": "0ac0225a3857f816bd2db33068c252fbb973d170",
+        "url": "https://api.github.com/repos/ceph/ceph/git/trees/0ac0225a3857f816bd2db33068c252fbb973d170"
+      },
+      "url": "https://api.github.com/repos/ceph/ceph/git/commits/6efad699249ba7c6928193dba111dbb23b606beb",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/ceph/ceph/commits/6efad699249ba7c6928193dba111dbb23b606beb",
+    "html_url": "https://github.com/ceph/ceph/commit/6efad699249ba7c6928193dba111dbb23b606beb",
+    "comments_url": "https://api.github.com/repos/ceph/ceph/commits/6efad699249ba7c6928193dba111dbb23b606beb/comments",
+    "author": {
+      "login": "batrick",
+      "id": 548304,
+      "avatar_url": "https://avatars.githubusercontent.com/u/548304?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/batrick",
+      "html_url": "https://github.com/batrick",
+      "followers_url": "https://api.github.com/users/batrick/followers",
+      "following_url": "https://api.github.com/users/batrick/following{/other_user}",
+      "gists_url": "https://api.github.com/users/batrick/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/batrick/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/batrick/subscriptions",
+      "organizations_url": "https://api.github.com/users/batrick/orgs",
+      "repos_url": "https://api.github.com/users/batrick/repos",
+      "events_url": "https://api.github.com/users/batrick/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/batrick/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "ldachary",
+      "id": 11650351,
+      "avatar_url": "https://avatars.githubusercontent.com/u/11650351?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ldachary",
+      "html_url": "https://github.com/ldachary",
+      "followers_url": "https://api.github.com/users/ldachary/followers",
+      "following_url": "https://api.github.com/users/ldachary/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ldachary/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ldachary/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ldachary/subscriptions",
+      "organizations_url": "https://api.github.com/users/ldachary/orgs",
+      "repos_url": "https://api.github.com/users/ldachary/repos",
+      "events_url": "https://api.github.com/users/ldachary/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ldachary/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "427f357f0eed32c9ce17590ae9303a94e8b710e7",
+        "url": "https://api.github.com/repos/ceph/ceph/commits/427f357f0eed32c9ce17590ae9303a94e8b710e7",
+        "html_url": "https://github.com/ceph/ceph/commit/427f357f0eed32c9ce17590ae9303a94e8b710e7"
+      }
+    ]
+  }
+]
