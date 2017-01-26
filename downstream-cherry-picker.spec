@@ -4,7 +4,7 @@
 %endif
 
 Name:           downstream-cherry-picker
-Version:        1.1.1
+Version:        1.2.0
 Release:        1%{?dist}
 Summary:        A command line object dispatcher
 Group:          Development/Languages
