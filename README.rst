@@ -14,6 +14,14 @@ This is tool is suitable for cherry-picking upstream patches into downstream
 
 Example::
 
+    (Let's say you've cloned to ceph here):
+    $ cd dev/ceph
+
+    (And you have the "patches" remote set up like so):
+    $ git remote -v
+      patches ssh://kdreyer@code.engineering.redhat.com/ceph (fetch)
+      patches ssh://kdreyer@code.engineering.redhat.com/ceph (push)
+
     (Reset your local branch to the latest "-patches"):
     $ git checkout ceph-1.3-rhel-patches
     $ git fetch patches
