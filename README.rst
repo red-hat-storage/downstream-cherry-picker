@@ -84,3 +84,16 @@ Features:
 
 * Automatically fetches the pull request's commits if you don't have the
   commits in your local clone already.
+
+Common Errors:
+--------------
+
+``error: a cherry-pick or revert is already in progress``
+
+* This may have been a leftover from trying to cherry-pick previously. Abort
+  the current cherry-pick, delete the old temp branch, and re-try::
+
+    git chery-pick --abort
+    git checkout ceph-2-rhel-patches
+    git branch -D rhbz-1333809
+    downstream-cherry-picker https://github.com/ceph/ceph/pull/13108 1333809
