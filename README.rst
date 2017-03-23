@@ -67,9 +67,9 @@ Features:
 
 * Cherry-picks each commit in a PR using standard conventions:
 
-   * Adds "``(cherry-picked from commit foo)``" to each cherry-pick.
+  * Adds "``(cherry-picked from commit foo)``" to each cherry-pick.
 
-   * Adds "``Resolves: rhbz#``" to each cherry-pick.
+  * Adds "``Resolves: rhbz#``" to each cherry-pick.
 
 * Does all the work on a separate "rhbz-" Git branch, so you can clean up if
   things go wrong or you have to resolve conflicts by hand. This branch name
