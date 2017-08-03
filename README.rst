@@ -1,8 +1,8 @@
 ``downstream-cherry-picker``
 ============================
 
-.. image:: https://travis-ci.org/ktdreyer/downstream-cherry-picker.svg?branch=master
-          :target: https://travis-ci.org/ktdreyer/downstream-cherry-picker
+.. image:: https://travis-ci.org/red-hat-storage/downstream-cherry-picker.svg?branch=master
+          :target: https://travis-ci.org/red-hat-storage/downstream-cherry-picker
 
 
 A tool to quickly cherry-pick whole GitHub pull requests that correspond to Red
@@ -53,7 +53,7 @@ from GitHub::
 
      virtualenv venv
      . venv/bin/activate
-     git clone https://github.com/ktdreyer/downstream-cherry-picker
+     git clone https://github.com/red-hat-storage/downstream-cherry-picker
      python setup.py develop
 
 You will now have a ``downstream-cherry-picker`` utility in your ``$PATH``.

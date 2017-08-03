@@ -10,7 +10,7 @@ Summary:        A command line object dispatcher
 Group:          Development/Languages
 
 License:        MIT
-URL:            https://github.com/ktdreyer/downstream-cherry-picker
+URL:            https://github.com/red-hat-storage/downstream-cherry-picker
 
 Source0:        %{name}-%{version}.tar.gz
 

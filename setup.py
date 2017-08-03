@@ -122,7 +122,7 @@ setup(
     packages=find_packages(exclude=['ez_setup']),
     author='Ken Dreyer',
     author_email='kdreyer [at] redhat.com',
-    url='https://github.com/ktdreyer/downstream-cherry-picker',
+    url='https://github.com/red-hat-storage/downstream-cherry-picker',
     version=metadata['version'],
     license='MIT',
     zip_safe=False,
