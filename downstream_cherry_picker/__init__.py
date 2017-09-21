@@ -116,11 +116,15 @@ def parse_pr_url(url):
     return (m.group(1), m.group(2), int(m.group(3)))
 
 
-def git(*args):
-    """ Run a git shell command. """
+def git(*args, **kwargs):
+    """ Run a git shell command, optionally logging its output. """
     args = ('git',) + args
     log.info('+ ' + ' '.join(args))
-    subprocess.check_call(args)
+    output = subprocess.check_output(args, stderr=subprocess.STDOUT)
+    if sys.version_info >= (3, 0):
+        output = output.decode('utf-8')
+    if kwargs.get('log_output', True):
+        log.info(output)
 
 
 def ensure_hook():
@@ -164,7 +168,7 @@ def main(argv):
     (first, last) = get_sha_range(owner, repo, number)
 
     try:
-        git('cat-file', '-e', '%s^{commit}' % first)
+        git('cat-file', '-e', '%s^{commit}' % first, log_output=False)
     except subprocess.CalledProcessError as e:
         log.info("First upstream commit not found. Fetching from github.com.")
         git('fetch',
