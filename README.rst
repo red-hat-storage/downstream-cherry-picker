@@ -22,6 +22,9 @@ Example::
       patches ssh://kdreyer@code.engineering.redhat.com/ceph (fetch)
       patches ssh://kdreyer@code.engineering.redhat.com/ceph (push)
 
+    (Update the remotes)
+    $ git remote update
+
     (Reset your local branch to the latest "-patches"):
     $ git checkout ceph-1.3-rhel-patches
     $ git fetch patches
