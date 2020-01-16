@@ -57,6 +57,7 @@ from GitHub::
      virtualenv venv
      . venv/bin/activate
      git clone https://github.com/red-hat-storage/downstream-cherry-picker
+     cd downstream-cherry-picker
      python setup.py develop
 
 You will now have a ``downstream-cherry-picker`` utility in your ``$PATH``.
