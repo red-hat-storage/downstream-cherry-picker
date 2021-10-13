@@ -48,7 +48,7 @@ def branch_name():
     try:
         name = subprocess.check_output(
             [GIT, "symbolic-ref", "HEAD"],
-            stderr=subprocess.STDOUT)
+            stderr=subprocess.STDOUT).decode()
     except Exception as err:
         if 'fatal: ref HEAD is not a symbolic ref' in err.output:
             # we are in a rebase or detached head state
@@ -80,7 +80,7 @@ def prepend_commit_msg(branch):
         # We used to raise here, but if cherry-picking to a different branch
         # that doesn't comply it would break preventing the cherry-pick. So we
         # print out the warning, but end up returning the contents.
-        print 'skipping commit msg change: Branch name "%s" does not follow required format: {tracker}-{ID}' % branch  # NOQA
+        print('skipping commit msg change: Branch name "%s" does not follow required format: {tracker}-{ID}' % branch)  # NOQA
         return contents
 
     if prefix == 'wip':
