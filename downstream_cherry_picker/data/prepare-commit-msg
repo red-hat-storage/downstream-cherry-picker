@@ -1,0 +1,103 @@
+#!/usr/bin/python
+"""
+This is a prepare-commit-msg hook that fill append commit messages with::
+
+    Resolves: {TRACKER}#{TICKET-ID}
+
+For example a RedHat BZ 0001 would look like::
+
+    Correct the syntax error
+
+    Signed-off-by: Alfredo Deza <adeza@redhat.com>
+
+    Resolves: rhbz#0001
+
+The requirement is to branch with the right identifier. For the above example
+the branch name would need to be: rhbz-0001
+
+This hook will split on `-` and use all lower casing to transform the branch
+into the "Resolves" line.
+
+Copy this file to $GITREPOSITORY/.git/hooks/prepare-commit-msg
+and mark it executable.
+"""
+import subprocess
+import sys
+import os
+
+
+def which(executable):
+    locations = (
+        '/usr/local/bin',
+        '/bin',
+        '/usr/bin',
+        '/usr/local/sbin',
+        '/usr/sbin',
+        '/sbin',
+    )
+
+    for location in locations:
+        executable_path = os.path.join(location, executable)
+        if os.path.exists(executable_path):
+            return executable_path
+
+GIT = which('git')
+
+
+def branch_name():
+    try:
+        name = subprocess.check_output(
+            [GIT, "symbolic-ref", "HEAD"],
+            stderr=subprocess.STDOUT)
+    except Exception as err:
+        if 'fatal: ref HEAD is not a symbolic ref' in err.output:
+            # we are in a rebase or detached head state
+            return ''
+    # This looks like: refs/heads/12345678/my-cool-feature
+    # if we ever get a branch that has '/' in it we are going to have
+    # some issues.
+    return name.split('/')[-1]
+    parts = name.split('/')
+    if len(parts) != 4:
+        raise ValueError("Branch name has '/' in it which is not allowed")
+    branch = parts[-1]
+    return branch
+
+
+def prepend_commit_msg(branch):
+    """Prepend the commit message with `text`"""
+    msgfile = sys.argv[1]
+    with open(msgfile) as f:
+        contents = f.read()
+
+    if not branch:
+        return contents
+
+    try:
+        prefix, ticket_id = branch.split('-')
+        ticket_id = int(ticket_id)
+    except ValueError:
+        # We used to raise here, but if cherry-picking to a different branch
+        # that doesn't comply it would break preventing the cherry-pick. So we
+        # print out the warning, but end up returning the contents.
+        print 'skipping commit msg change: Branch name "%s" does not follow required format: {tracker}-{ID}' % branch  # NOQA
+        return contents
+
+    if prefix == 'wip':
+        # Skip "wip" branches, ie "work in progress"
+        return contents
+
+    resolves_line = "\nResolves: %s#%s" % (prefix.lower(), ticket_id)
+
+    with open(msgfile, 'a') as f:
+        # Don't append if it's already there
+        if resolves_line not in contents:
+            f.write(resolves_line)
+
+
+def main():
+    branch = branch_name().strip().strip('\n')
+    prepend_commit_msg(branch)
+
+if __name__ == '__main__':
+    main()
