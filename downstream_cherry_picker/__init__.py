@@ -5,6 +5,7 @@ import stat
 import subprocess
 import sys
 import requests
+from shutil import copyfile
 
 __version__ = '1.2.0'
 
@@ -20,8 +21,6 @@ Example:
 API_BASE = 'https://api.github.com'
 
 PR_URL_REGEX = r'https://github.com/([^/]+)/([^/]+)/pull/(\d+)$'
-
-HOOK_URL = 'https://gist.githubusercontent.com/alfredodeza/252d66dbf4a5c36cfb7b1cb3c0faf445/raw/08cff9560328c0c03b11b9f6ac9db98dbad0a6e4/prepare-commit-msg'  # NOQA
 
 logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.INFO)
 log = logging.getLogger()
@@ -125,14 +124,10 @@ def git(*args):
 
 def ensure_hook():
     """ Ensure that the .git/hooks/prepare-commit-msg file is ready """
+    dir = os.path.dirname(os.path.realpath(__file__))
+    src_hook = f'{dir}/data/prepare-commit-msg'
     hook = '.git/hooks/prepare-commit-msg'
-    # https://gist.github.com/alfredodeza/252d66dbf4a5c36cfb7b1cb3c0faf445
-    if not os.path.isfile(hook):
-        log.warn('%s not found, downloading from Gist' % hook)
-        r = requests.get(HOOK_URL)
-        fh = open(hook, 'w')
-        fh.write(r.text)
-        fh.close()
+    copyfile(src_hook, hook)
     if not os.access(hook, os.X_OK):
         st = os.stat(hook)
         os.chmod(hook, st.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)

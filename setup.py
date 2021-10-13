@@ -137,4 +137,5 @@ setup(
         'pytest-flake8',
     ],
     cmdclass={'test': PyTest, 'bump': BumpCommand, 'release': ReleaseCommand},
+    package_data={'downstream_cherry_picker': ['data/prepare-commit-msg']}
 )
