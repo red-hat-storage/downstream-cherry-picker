@@ -6,7 +6,7 @@ import subprocess
 import sys
 import requests
 
-__version__ = '1.2.0'
+__version__ = '2.0.0'
 
 USAGE = """
 %(cmd)s github-url rhbz-number
@@ -19,9 +19,8 @@ Example:
 
 API_BASE = 'https://api.github.com'
 
-PR_URL_REGEX = r'https://github.com/([^/]+)/([^/]+)/pull/(\d+)$'
+PR_URL_REGEX = r'https://github.com/([^/]+)/([^/]+)/pull/(\d+)/?$'
 
-HOOK_URL = 'https://gist.githubusercontent.com/alfredodeza/252d66dbf4a5c36cfb7b1cb3c0faf445/raw/08cff9560328c0c03b11b9f6ac9db98dbad0a6e4/prepare-commit-msg'  # NOQA
 
 logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.INFO)
 log = logging.getLogger()
@@ -120,22 +119,8 @@ def git(*args):
     """ Run a git shell command. """
     args = ('git',) + args
     log.info('+ ' + ' '.join(args))
-    subprocess.check_call(args)
-
-
-def ensure_hook():
-    """ Ensure that the .git/hooks/prepare-commit-msg file is ready """
-    hook = '.git/hooks/prepare-commit-msg'
-    # https://gist.github.com/alfredodeza/252d66dbf4a5c36cfb7b1cb3c0faf445
-    if not os.path.isfile(hook):
-        log.warn('%s not found, downloading from Gist' % hook)
-        r = requests.get(HOOK_URL)
-        fh = open(hook, 'w')
-        fh.write(r.text)
-        fh.close()
-    if not os.access(hook, os.X_OK):
-        st = os.stat(hook)
-        os.chmod(hook, st.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+    return subprocess.run(
+        args, capture_output=True, check=True, text=True).stdout
 
 
 def main(argv):
@@ -158,8 +143,6 @@ def main(argv):
         log.error('Could not parse GitHub PR argument:')
         raise SystemExit(e)
 
-    ensure_hook()
-
     # The sha1 range to cherry-pick:
     (first, last) = get_sha_range(owner, repo, number)
 
@@ -179,15 +162,36 @@ def main(argv):
     msg = 'Cherry-picking https://github.com/%s/%s/pull/%d to %s (%s)'
     log.info(msg % (owner, repo, number, starting_branch, starting_ref))
 
-    # Use an rhbz branch so our prepare-commit-msg hook will fire.
-    git('checkout', '-b', 'rhbz-' + bz)
+    MERGE_MSG_FILE = git('rev-parse', '--git-path', 'MERGE_MSG').rstrip()
+    log.info("Merge message file: %s", MERGE_MSG_FILE)
 
     # Cherry-pick the range of commits.
-    # EDITOR=/bin/true causes the prepare-commit-msg hook to run.
-    git('-c', 'core.editor=/bin/true', 'cherry-pick', '-x',
-        '%s~..%s' % (first, last))
+    commits = git('rev-list', '--reverse', f'{first}^..{last}').splitlines()
+    log.info('Commits to cherry-pick: %r', commits)
+    for commit in commits:
+        try:
+            git('cherry-pick', '-x', '--no-commit', commit)
+        except subprocess.CalledProcessError as e:
+            # Needs conflict resolution
+            if e.returncode == 1:
+                log.info('Manual conflict resolution needed...')
+                git('mergetool')
+            else:
+                raise e
 
-    # Merge this rhbz branch back into our starting branch.
-    git('checkout', starting_branch)
-    git('merge', '--ff-only', 'rhbz-' + bz)
-    git('branch', '-d', 'rhbz-' + bz)
+        with open(MERGE_MSG_FILE, 'a') as f:
+            f.write(f'\nResolves: rhbz#{bz}')
+            f.flush()
+
+        with open(MERGE_MSG_FILE, 'r') as f:
+            log.info("Commit message:\n%s", f.read())
+
+        try:
+            git('commit', '--no-edit')
+        except subprocess.CalledProcessError as e:
+            log.error('%r', e)
+            raise e
+
+
+if __name__ == '__main__':
+    main(sys.argv)
